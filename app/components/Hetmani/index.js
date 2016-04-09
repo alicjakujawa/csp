@@ -9,10 +9,9 @@ import _ from 'lodash';
 class Hetmani extends Component {
 
   static propTypes = {
-    hetmaniSize: PropTypes.number,
+    hetmani: PropTypes.obj,
     initGame: PropTypes.func,
     setSize: PropTypes.func,
-    solutions: PropTypes.object,
     clearGame: PropTypes.func,
   };
 
@@ -22,11 +21,11 @@ class Hetmani extends Component {
 
   componentDidMount() {
     this.props.clearGame();
-  }
+  };
 
   render() {
-    const { initGame, hetmaniSize, solutions } = this.props;
-    let className = this.props.hetmani.hideSettings ? styles.hide : styles.show;
+    const { initGame, hetmani } = this.props;
+    let className = hetmani.hideSettings ? styles.hide : styles.show;
     return (
       <div>
         <div className={ styles.backButton }>
@@ -36,7 +35,7 @@ class Hetmani extends Component {
         </div>
         <div className={className} >
           <h3>Choose board size</h3>
-          <RadioButtonGroup name="sudokuSize" onChange={ this.onSizeChange.bind(this) } { ...hetmaniSize } defaultSelected="3">
+          <RadioButtonGroup name="sudokuSize" onChange={ this.onSizeChange.bind(this) } { ...hetmani.hetmaniSize } defaultSelected="3">
             <RadioButton
               value="3"
               label="3"
@@ -55,13 +54,13 @@ class Hetmani extends Component {
           </RadioButtonGroup>
           <RaisedButton label="Start" primary={ true } onClick={ () => initGame() } style={ styles } />
         </div>
-        <div className={this.props.hetmani.hideSettings ? styles.show : styles.hide}>
+        <div className={hetmani.hideSettings ? styles.show : styles.hide}>
           {
-            _.isEmpty(solutions) ?
+            _.isEmpty(hetmani.solutions) ?
             (<p>Nie znaleziono rozwiązania</p>) :
             (
             <div>
-              {solutions.map((result, index) =>
+              {hetmani.solutions.map((result, index) =>
                 <div key={ index }>
                   <h2>solutions</h2>
                 </div>
