@@ -1,3 +1,10 @@
-export const INIT_GAME = "INIT_GAME";
-export const SET_SIZE = "SET_SIZE";
-export const SET_DIFFICULTY = "SET_DIFFICULTY";
+export const SUDOKU = {
+  INIT_GAME: "INIT_GAME",
+  SET_SIZE: "SET_SIZE",
+  SET_DIFFICULTY: "SET_DIFFICULTY"
+}
+
+export const HETMANI = {
+  INIT_GAME: "INIT_HETMANI_GAME",
+  SET_SIZE: "SET_HETMANI_SIZE"
+}

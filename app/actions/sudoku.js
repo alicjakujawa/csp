@@ -1,21 +1,21 @@
-import * as actionTypes from "../constants/ActionTypes";
+import { SUDOKU } from '../constants/ActionTypes';
 
 export function initGame() {
   return {
-    type: actionTypes.INIT_GAME
+    type: SUDOKU.INIT_GAME
   };
 }
 
 export function setSize(sudokuSize) {
   return {
-    type: actionTypes.SET_SIZE,
+    type: SUDOKU.SET_SIZE,
     sudokuSize
   };
 }
 
 export function setLevel(difficulty) {
   return {
-    type: actionTypes.SET_DIFFICULTY,
+    type: SUDOKU.SET_DIFFICULTY,
     difficulty
   };
 }
