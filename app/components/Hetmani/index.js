@@ -12,12 +12,17 @@ class Hetmani extends Component {
     hetmaniSize: PropTypes.number,
     initGame: PropTypes.func,
     setSize: PropTypes.func,
-    solutions: PropTypes.object
+    solutions: PropTypes.object,
+    clearGame: PropTypes.func,
   };
 
   onSizeChange(e) {
     this.props.setSize(e.target.value);
   };
+
+  componentDidMount() {
+    this.props.clearGame();
+  }
 
   render() {
     const { initGame, hetmaniSize, solutions } = this.props;
@@ -50,19 +55,21 @@ class Hetmani extends Component {
           </RadioButtonGroup>
           <RaisedButton label="Start" primary={ true } onClick={ () => initGame() } style={ styles } />
         </div>
-        {
-          _.isEmpty(solutions) ?
-          (<p>Nie znaleziono rozwiązania</p>) :
-          (
-          <div>
-            {solutions.map((result, index) =>
-              <div key={ index }>
-                <h2>solutions</h2>
-              </div>
-            )}
-          </div>
-          )
-        }
+        <div className={this.props.hetmani.hideSettings ? styles.show : styles.hide}>
+          {
+            _.isEmpty(solutions) ?
+            (<p>Nie znaleziono rozwiązania</p>) :
+            (
+            <div>
+              {solutions.map((result, index) =>
+                <div key={ index }>
+                  <h2>solutions</h2>
+                </div>
+              )}
+            </div>
+            )
+          }
+        </div>
       </div>
     );
   }

@@ -6,5 +6,6 @@ export const SUDOKU = {
 
 export const HETMANI = {
   INIT_GAME: "INIT_HETMANI_GAME",
-  SET_SIZE: "SET_HETMANI_SIZE"
+  SET_SIZE: "SET_HETMANI_SIZE",
+  CLEAR: "CLEAR_HEAMTNI",
 }

@@ -15,6 +15,12 @@ export function setSize(hetmaniSize) {
   };
 }
 
+export function clearGame() {
+  return {
+    type: HETMANI.CLEAR
+  };
+}
+
 export function initGame() {
   return (dispatch, getState) => {
     const solutions = Hetmani.newGame(getState().hetmaniSize);
