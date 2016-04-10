@@ -4,12 +4,13 @@ import styles from './style.sass';
 import RadioButton from 'material-ui/lib/radio-button';
 import RadioButtonGroup from 'material-ui/lib/radio-button-group';
 import RaisedButton from 'material-ui/lib/raised-button';
+import Board from "../Board";
 import _ from 'lodash';
 
 class Hetmani extends Component {
 
   static propTypes = {
-    hetmani: PropTypes.obj,
+    hetmani: PropTypes.func,
     initGame: PropTypes.func,
     setSize: PropTypes.func,
     clearGame: PropTypes.func,
@@ -62,7 +63,7 @@ class Hetmani extends Component {
             <div>
               {hetmani.solutions.map((result, index) =>
                 <div key={ index }>
-                  <h2>solutions</h2>
+                  <Board { ...result } />
                 </div>
               )}
             </div>
