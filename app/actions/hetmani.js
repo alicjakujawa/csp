@@ -25,6 +25,8 @@ export function initGame() {
   return (dispatch, getState) => {
     const SIZE = getState().hetmani.hetmaniSize;
     const solutions = Hetmani.newGame(SIZE);
+    let b = solutions[1];
+    console.log(b);
     dispatch(init(solutions))
   };
 }
