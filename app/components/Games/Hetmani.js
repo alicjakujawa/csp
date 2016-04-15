@@ -50,10 +50,8 @@ function setQueen(board, col, N) {
 }
 
 function hetmaniSolver(N) {
-  for(let i = 0; i < N; i++) {
-    let board = generateMultArray(N);
-    setQueen(board, i, N);
-  }
+  let board = generateMultArray(N);
+  setQueen(board, 0, N);
 }
 
 function generateMultArray(N) {
