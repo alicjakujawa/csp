@@ -14,7 +14,7 @@ export default function Board(props) {
             {mapObject(props, (i, value) =>
               <tr key={i}>
                 {value.map((cell, j) =>
-                  <td key={j} className={cell == 1? styles.queen : styles.cell}>{cell.length}</td>
+                  <td key={j} className={cell > 0? styles.queen : styles.cell}>{cell.length}</td>
                 )}
               </tr>
             )}

@@ -49,9 +49,59 @@ function setQueen(board, col, N) {
   return false;
 }
 
+function setQueenForward(board, currentRow, N) {
+  let i;
+  if (currentRow >= N) {
+    return true;
+  }
+  for (i = 0; i < N; i++) {
+    if (board[currentRow][i] == 0) {
+      board[currentRow][i] = 1 + currentRow;
+      board = setInvalid(board, currentRow, N, i);
+      if (setQueenForward(board, currentRow + 1, N)) {
+        solutions.push(_.cloneDeep(board));
+      }
+      board[currentRow][i] = 0;
+      resetBoard(board, currentRow, N);
+    }
+  }
+  return false;
+}
+
+function setInvalid(b, currentRow, N, col) {
+  let row, j;
+  let board = _.cloneDeep(b);
+
+  for(row = currentRow + 1; row < N; row++) {
+    if(board[row][col] == 0) {
+      board[row][col] = -(1+currentRow);
+    }
+    let rowGap = row - currentRow;
+    if(col-rowGap>=0 && board[row][col-rowGap] == 0) {//left bottom diagonal position
+      board[row][col-rowGap] = -(1+currentRow);
+    }
+    if(col+rowGap<N && board[row][col+rowGap] == 0) {//right bottom diagonal position
+      board[row][col+rowGap] = -(1+currentRow);
+    }
+  }
+
+  return board;
+}
+
+function resetBoard(board, currentRow, N) {
+  for(let row=currentRow+1; row<N; row++) {
+    for(let col=0; col<N; col++) {
+      if(board[row][col] > currentRow || board[row][col] < -currentRow) {
+        board[row][col] = 0;
+      }
+    }
+  }
+}
+
 function hetmaniSolver(N) {
   let board = generateMultArray(N);
   setQueen(board, 0, N);
+  //setQueenForward(board, 0, N);
 }
 
 function generateMultArray(N) {
