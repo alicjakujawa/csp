@@ -29,7 +29,7 @@ class Sudoku extends Component {
   };
 
   render() {
-    const { initGame, sudoku } = this.props;
+    const { initGame, sudokuSize, sudoku } = this.props;
     return (
       <div>
         <div className={ styles.backButton }>
@@ -38,6 +38,19 @@ class Sudoku extends Component {
           </Link>
         </div>
         <div className={sudoku.hideSettings ? styles.hide : styles.show}>
+          <h3>Choose board size</h3>
+          <RadioButtonGroup name="sudokuSize" onChange={ this.onSizeChange.bind(this) } { ...sudokuSize } defaultSelected="3">
+            <RadioButton
+              value="3"
+              label="3"
+              style={ styles.radioButton }
+            />
+            <RadioButton
+              value="4"
+              label="4"
+              style={styles.radioButton}
+            />
+          </RadioButtonGroup>
           <h3>Choose difficulty levels</h3>
           <RadioButtonGroup { ...sudoku.difficulty } onChange={ this.onLevelChange.bind(this) } name="difficultyLevel" defaultSelected="3">
             <RadioButton
