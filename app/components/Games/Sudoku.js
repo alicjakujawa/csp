@@ -11,8 +11,9 @@ function newGame(N, level) {
   let gameData = prepareBoard(level, N, board);
 
   let startTime = new Date().getTime();
-  //sudokuSolver(gameData.newBoard, gameData.nullFields, N);
-  sudokuSolverForward(gameData.newBoard, gameData.nullFields, N);
+  sudokuSolver(gameData.newBoard, gameData.nullFields, N);
+  //sudokuSolver2(gameData.newBoard, gameData.nullFields, N);
+  //sudokuSolverForward(gameData.newBoard, gameData.nullFields, N);
   //sudokuSolverForward(gameData.newBoard, gameData.nullFields, N);
   let endTime = new Date().getTime();
   console.log(endTime - startTime)
@@ -38,6 +39,27 @@ function sudokuSolver(board, unassignedLocation, N) {
       }
       board[row][col] = 0;
     }
+  }
+  return false;
+}
+
+function sudokuSolver2(board, unassignedLocation, N) {
+
+  if(_.isEmpty(unassignedLocation)) {
+    return true;
+  }
+
+  let [row, col] = unassignedLocation[0];
+  let tail = _.tail(unassignedLocation);
+  let domain = generateDomain(board, row, col, N);
+
+  for(let i = 0; i < domain.length; i++) {
+    board[row][col] = domain[i];
+    iter++;
+    if(sudokuSolver(board, _.cloneDeep(tail), N)) {
+      solutions.push(_.cloneDeep(board))
+    }
+    board[row][col] = 0;
   }
   return false;
 }
