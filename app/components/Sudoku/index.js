@@ -4,6 +4,7 @@ import styles from './style.sass';
 import RadioButton from 'material-ui/lib/radio-button';
 import RadioButtonGroup from 'material-ui/lib/radio-button-group';
 import RaisedButton from 'material-ui/lib/raised-button';
+import SudokuBoard from "../SudokuBoard";
 
 class Sudoku extends Component {
 
@@ -37,24 +38,6 @@ class Sudoku extends Component {
           </Link>
         </div>
         <div className={sudoku.hideSettings ? styles.hide : styles.show}>
-          <h3>Choose board size</h3>
-          <RadioButtonGroup name="sudokuSize" onChange={ this.onSizeChange.bind(this) } { ...sudoku.sudokuSize } defaultSelected="3">
-            <RadioButton
-              value="3"
-              label="3"
-              style={ styles.radioButton }
-            />
-            <RadioButton
-              value="4"
-              label="4"
-              style={styles.radioButton}
-            />
-            <RadioButton
-              value="5"
-              label="5"
-              style={ styles.radioButton }
-            />
-          </RadioButtonGroup>
           <h3>Choose difficulty levels</h3>
           <RadioButtonGroup { ...sudoku.difficulty } onChange={ this.onLevelChange.bind(this) } name="difficultyLevel" defaultSelected="3">
             <RadioButton
@@ -81,7 +64,11 @@ class Sudoku extends Component {
             (<p>Nie znaleziono rozwiązania</p>) :
             (
             <div>
-              <p>solutions</p>
+              {sudoku.solutions.map((result, index) =>
+                <div key={ index }>
+                  <SudokuBoard { ...result } />
+                </div>
+              )}
             </div>
             )
           }

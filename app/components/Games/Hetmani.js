@@ -100,8 +100,14 @@ function resetBoard(board, currentRow, N) {
 
 function hetmaniSolver(N) {
   let board = generateMultArray(N);
+
+  let startTime = new Date().getTime();
+
   setQueen(board, 0, N);
   //setQueenForward(board, 0, N);
+
+  let endTime = new Date().getTime();
+  console.log(endTime - startTime, "solution length: ", solutions.length)
 }
 
 function generateMultArray(N) {

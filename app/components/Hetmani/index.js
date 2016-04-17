@@ -38,19 +38,29 @@ class Hetmani extends Component {
           <h3>Choose board size</h3>
           <RadioButtonGroup name="sudokuSize" onChange={ this.onSizeChange.bind(this) } { ...hetmani.hetmaniSize } defaultSelected="3">
             <RadioButton
-              value="3"
-              label="3"
-              style={ styles.radioButton }
-            />
-            <RadioButton
               value="4"
               label="4"
-              style={styles.radioButton}
+              style={ styles.radioButton }
             />
             <RadioButton
               value="5"
               label="5"
+              style={styles.radioButton}
+            />
+            <RadioButton
+              value="8"
+              label="8"
               style={ styles.radioButton }
+            />
+            <RadioButton
+              value="10"
+              label="10"
+              style={ styles.radioButton }
+            />
+            <RadioButton
+              value="12"
+              label="12"
+              style={styles.radioButton}
             />
           </RadioButtonGroup>
           <RaisedButton label="Start" primary={ true } onClick={ () => initGame() } style={ styles } />

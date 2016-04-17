@@ -1,7 +1,7 @@
 import { HETMANI } from '../constants/ActionTypes';
 
 const initialState = {
-  hetmaniSize: 3,
+  hetmaniSize: 4,
   hideSettings: false
 }
 
